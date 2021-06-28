@@ -36,8 +36,8 @@ public class IOFile {
     }
     public static void writeString(String file, String content){
         try{
-            ObjectOutputStream o =new ObjectOutputStream(new FileOutputStream(file));
-            o.writeUTF(content);
+            ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream(file));
+            o.write(content.getBytes());
             o.close();
         }catch(IOException e){
             System.out.println(e);
