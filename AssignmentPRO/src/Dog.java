@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -51,6 +52,8 @@ public class Dog implements IPet<DogData> {
     public void saveFile() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
+    public Dog() {
+        this._list = new ArrayList<>();
+    }
 }
