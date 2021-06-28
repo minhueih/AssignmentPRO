@@ -1,86 +1,56 @@
 
-public class Dog {
-    private String ID;
-    private String petID;
-    private String dogName;
-    private String dogColor;
-    private boolean dogGender;
-    private double price;
-    private String describe;
+import java.util.List;
 
-    public Dog() {
-    }
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-    public Dog(String ID, String petID, String dogName, String dogColor, boolean dogGender, double price, String describe) {
-        this.ID = ID;
-        this.petID = petID;
-        this.dogName = dogName;
-        this.dogColor = dogColor;
-        this.dogGender = dogGender;
-        this.price = price;
-        this.describe = describe;
-    }
+/**
+ *
+ * @author Admin
+ */
+public class Dog implements IPet<DogData> {
 
-    public String getID() {
-        return ID;
-    }
+    private List<DogData> _list;
 
-    public void setID(String ID) {
-        this.ID = ID;
-    }
-
-    public String getPetID() {
-        return petID;
-    }
-
-    public void setPetID(String petID) {
-        this.petID = petID;
-    }
-
-    public String getDogName() {
-        return dogName;
-    }
-
-    public void setDogName(String dogName) {
-        this.dogName = dogName;
-    }
-
-    public String getDogColor() {
-        return dogColor;
-    }
-
-    public void setDogColor(String dogColor) {
-        this.dogColor = dogColor;
-    }
-
-    public boolean isDogGender() {
-        return dogGender;
-    }
-
-    public void setDogGender(boolean dogGender) {
-        this.dogGender = dogGender;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getDescribe() {
-        return describe;
-    }
-
-    public void setDescribe(String describe) {
-        this.describe = describe;
+    @Override
+    public void listAll() {
+        _list.forEach((_dog) -> {
+            System.out.println(_dog.toString());
+        });
     }
 
     @Override
-    public String toString() {
-        return ID + "\t" + petID + "\t" + dogName + "\t" + dogColor + "\t" + 
-                (dogGender?"male":"female") + "\t" + price + "\t" + describe;
+    public void addPet(DogData dog) {
+        for (DogData d : _list) {
+            if (d.getID() == dog.getID()) {
+                System.out.println("Dog already existed!");
+                return;
+            }
+        }
+        if (dog == null || _list.contains(dog)) {
+            System.out.println("Dog already existed!");
+            return;
+        }
+        _list.add(dog);
     }
+
+    @Override
+    public void removePet(String id) {
+        for (DogData d : _list) {
+            if (d.getID() == Integer.parseInt(id)) {
+                _list.remove(d);
+                break;
+            }
+        }
+    }
+
+    @Override
+    public void saveFile() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     
 }
