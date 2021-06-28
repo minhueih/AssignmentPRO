@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -50,6 +51,10 @@ public class PetDog implements IPet<PetDogData> {
     @Override
     public void saveFile() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public PetDog() {
+        this._list = new ArrayList<>();
     }
     
 }
