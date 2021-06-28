@@ -19,7 +19,7 @@ public class DogData {
 
     @Override
     public String toString() {
-        return ID + "; " + PetID + "; " + DogName + "; " + DogColor + "; " + DogGender + "; " + Price + "; " + Desc;
+        return ID + "; " + PetID + "; " + DogName + "; " + DogColor + "; " + (DogGender ? "cai" : "duc") + "; " + Price + "; " + Desc;
     }
     public DogData() {}
     
