@@ -34,4 +34,13 @@ public class IOFile {
             System.out.println(e);
         }
     }
+    public static void writeString(String file, String content){
+        try{
+            ObjectOutputStream o =new ObjectOutputStream(new FileOutputStream(file));
+            o.writeUTF(content);
+            o.close();
+        }catch(IOException e){
+            System.out.println(e);
+        }
+    }
 }
