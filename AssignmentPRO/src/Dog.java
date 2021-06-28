@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,14 +25,36 @@ public class Dog implements IPet<DogData> {
     }
 
     @Override
-    public void addPet(DogData dog) {
+    public void addPet() {
+        Scanner sc = new Scanner(System.in);
+        String id, petID, dogName, dogColor, describe;
+        boolean dogGender;
+        int price;
+        
+        System.out.print("Enter ID: ");
+        id = sc.nextLine();
+        System.out.print("Enter pet ID: ");
+        petID = sc.nextLine();
+        System.out.print("Enter dog name: ");
+        dogName = sc.nextLine();
+        System.out.print("Enter dog color: ");
+        dogColor = sc.nextLine();
+        System.out.print("Enter dog gender (true/false) (true = female) : ");
+        dogGender = Boolean.parseBoolean(sc.nextLine());
+        System.out.print("Enter price: ");
+        price = Integer.parseInt(sc.nextLine());
+        System.out.print("Enter describe: ");
+        describe = sc.nextLine();
+        
+        DogData dog = new DogData(Integer.parseInt(id), Integer.parseInt(petID), dogName, dogColor, dogGender, price, describe);
+        
         for (DogData d : _list) {
             if (d.getID() == dog.getID()) {
                 System.out.println("Dog already existed!");
                 return;
             }
         }
-        if (dog == null || _list.contains(dog)) {
+        if (_list.contains(dog)) {
             System.out.println("Dog already existed!");
             return;
         }
