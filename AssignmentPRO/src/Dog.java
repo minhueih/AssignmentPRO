@@ -1,4 +1,9 @@
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,6 +21,10 @@ import java.util.Scanner;
 public class Dog implements IPet<DogData> {
 
     private List<DogData> _list;
+    
+    public List<DogData> getList() {
+        return _list;
+    }
 
     @Override
     public void listAll() {
