@@ -1,4 +1,8 @@
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,6 +20,10 @@ import java.util.Scanner;
 public class PetDog implements IPet<PetDogData> {
     
     private List<PetDogData> _list;
+    
+    public List<PetDogData> getList() {
+        return _list;
+    }
     
     @Override
     public void listAll() {
@@ -64,7 +72,12 @@ public class PetDog implements IPet<PetDogData> {
         for (PetDogData d : _list) {
             out_ += d.toString() + "\n\n";
         }
-        IOFile.writeString("../petdog.txt", out_);
+        Path file = Paths.get("petdog.txt");
+        try {
+            Files.write(file, out_.getBytes());
+        } catch (IOException e) {
+            System.out.println(e);
+        }
         System.out.println("Write completed!");
     }
 
