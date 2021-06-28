@@ -64,7 +64,7 @@ public class PetDog implements IPet<PetDogData> {
         for (PetDogData d : _list) {
             out_ += d.toString() + "\n\n";
         }
-        IOFile.writeString("../dog.txt", out_);
+        IOFile.writeString("../petdog.txt", out_);
         System.out.println("Write completed!");
     }
 
